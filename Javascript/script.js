@@ -11,6 +11,7 @@ const BIRD_WIDTH = 30;
 const BIRD_HEIGHT = 30;
 const PIPE_DELAY_SPEED = 120;
 const BIRD_RIGHT_POSITION = BACKGROUNDWIDTH - 2 * BIRD_HEIGHT;
+const GAME_ANIMATION_FRAME = 24;
 var PIPES = [];
 var pipes = 1;
 var counter = 0;
@@ -224,7 +225,7 @@ function addBird(parent) {
   }
 
   this.moveBird = function() {
-    this.birdPosition++;
+    this.birdPosition+=2;
   };
 
   this.updateBird = function() {
@@ -273,5 +274,5 @@ function animate() {
       PIPES[i].detectCollision();
       PIPES[i].countScore();
     }
-  }, 24);
+  }, GAME_ANIMATION_FRAME);
 }
