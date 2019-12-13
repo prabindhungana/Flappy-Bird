@@ -12,6 +12,8 @@ const BIRD_HEIGHT = 30;
 const PIPE_DELAY_SPEED = 120;
 const BIRD_RIGHT_POSITION = BACKGROUNDWIDTH - 2 * BIRD_HEIGHT;
 const GAME_ANIMATION_FRAME = 24;
+const YGRAVITY=0.1
+var gravity = 2;
 var PIPES = [];
 var pipes = 1;
 var counter = 0;
@@ -211,6 +213,7 @@ function addBird(parent) {
     var x = e.keyCode;
 
     if (x === 32) {
+      gravity = 2;
       that.birdPosition -= 30;
       that.bird.style.top = that.birdPosition + "px";
       that.bird.setAttribute("src", "./Images/upflap.png");
@@ -225,7 +228,8 @@ function addBird(parent) {
   }
 
   this.moveBird = function() {
-    this.birdPosition+=2;
+    this.birdPosition+=gravity;
+    gravity += YGRAVITY;
   };
 
   this.updateBird = function() {
